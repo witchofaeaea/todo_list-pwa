@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <meta name="description" content="İnternetsiz çalışan basit yapılacaklar listesi">
+  <title>Yapılacaklar</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Yapılacaklar</h1>
+      <span id="offline-badge" class="badge" hidden data-testid="offline-badge">Çevrimdışı</span>
+    </header>
+
+    <form id="todo-form" class="todo-form" data-testid="todo-form" autocomplete="off">
+      <label for="todo-input" class="visually-hidden">Yeni görev</label>
+      <input id="todo-input" type="text" placeholder="Ne yapılacak?" maxlength="200" data-testid="todo-input">
+      <button type="submit" data-testid="add-button">Ekle</button>
+    </form>
+    <p id="form-error" class="error" role="alert" hidden data-testid="form-error"></p>
+
+    <nav class="filters" aria-label="Filtreler">
+      <button type="button" class="filter active" data-filter="all" data-testid="filter-all">Tümü</button>
+      <button type="button" class="filter" data-filter="active" data-testid="filter-active">Aktif</button>
+      <button type="button" class="filter" data-filter="done" data-testid="filter-done">Tamamlanan</button>
+    </nav>
+
+    <ul id="todo-list" class="todo-list" data-testid="todo-list"></ul>
+    <p id="empty-state" class="empty" data-testid="empty-state">Henüz görev yok.</p>
+
+    <footer class="app-footer">
+      <span id="counter" data-testid="counter">0 görev kaldı</span>
+      <button type="button" id="clear-done" class="link-button" data-testid="clear-done">Tamamlananları sil</button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
