@@ -1,0 +1,91 @@
+/* Renk değişkenleri, sayfa düzeni ve genel öğeler */
+
+:root {
+  --bg: #f4f4f7;
+  --card: #ffffff;
+  --text: #1f2330;
+  --muted: #6b7080;
+  --border: #e2e3ea;
+  --accent: #4f46e5;
+  --accent-text: #ffffff;
+  --danger: #dc2626;
+  --warning: #b45309;
+  --toast-bg: #1f2330;
+  --toast-text: #f4f4f7;
+  --toast-action: #a5b4fc;
+  --radius: 10px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14151a;
+    --card: #1e2028;
+    --text: #e8e9ee;
+    --muted: #9a9eac;
+    --border: #2e313c;
+    --accent: #818cf8;
+    --accent-text: #14151a;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --toast-bg: #e8e9ee;
+    --toast-text: #14151a;
+    --toast-action: #4338ca;
+    color-scheme: dark;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  padding: env(safe-area-inset-top, 0) 16px env(safe-area-inset-bottom, 0);
+}
+
+.app {
+  max-width: 560px;
+  margin: 0 auto;
+  padding-block: 24px 96px; /* altta bildirime yer bırak */
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 { margin: 0 0 16px; font-size: 1.75rem; }
+
+.badge {
+  margin-bottom: 16px;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: var(--muted);
+  color: var(--bg);
+  font-size: 0.8rem;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button { cursor: pointer; }
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+[hidden] { display: none !important; }

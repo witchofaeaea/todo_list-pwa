@@ -1,13 +1,30 @@
 // Dosyaları değiştirdiğinde sürümü artır, böylece telefonlardaki eski önbellek yenilenir.
-const CACHE_NAME = 'todo-pwa-v1';
+const CACHE_NAME = 'todo-pwa-v2';
 
+// Yeni bir js/ ya da css/ dosyası eklersen buraya da ekle (çevrimdışı açılış için).
 const ASSETS = [
   './',
   './index.html',
-  './style.css',
-  './app.js',
   './manifest.json',
-  './icon.svg'
+  './icon.svg',
+  './css/base.css',
+  './css/controls.css',
+  './css/todos.css',
+  './css/toast.css',
+  './js/main.js',
+  './js/store.js',
+  './js/storage.js',
+  './js/todo-model.js',
+  './js/selectors.js',
+  './js/dates.js',
+  './js/dom.js',
+  './js/view.js',
+  './js/todo-item.js',
+  './js/list-controller.js',
+  './js/drag.js',
+  './js/toast.js',
+  './js/actions.js',
+  './js/pwa.js'
 ];
 
 self.addEventListener('install', event => {

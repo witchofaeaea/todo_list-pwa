@@ -1,0 +1,138 @@
+/* Görev listesi ve satırları: etiketler, sürükleme, düzenleme formu */
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.todo-list:empty { display: none; }
+
+.todo-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 8px 10px 4px;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+
+.todo-item:last-child { border-bottom: 0; }
+
+/* Yüksek öncelik: solda renkli şerit */
+.todo-item.priority-high { box-shadow: inset 3px 0 0 var(--danger); }
+
+.todo-item input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  margin: 0;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.todo-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.todo-text { overflow-wrap: anywhere; }
+
+.todo-item.done .todo-text {
+  text-decoration: line-through;
+  color: var(--muted);
+}
+
+/* --- Öncelik / tarih etiketleri --- */
+
+.todo-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 0 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 0.75rem;
+  line-height: 1.6;
+}
+
+.priority-tag.high { color: var(--danger); border-color: currentColor; }
+.due-tag.today { color: var(--warning); border-color: currentColor; }
+.due-tag.overdue { color: var(--danger); border-color: currentColor; font-weight: 600; }
+.todo-item.done .tag { opacity: 0.6; }
+
+/* --- Satır düğmeleri --- */
+
+.icon-button,
+.drag-handle {
+  flex-shrink: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  line-height: 1;
+  border-radius: 6px;
+}
+
+.icon-button { padding: 6px 8px; font-size: 1.15rem; }
+.icon-button:hover { color: var(--accent); background: var(--bg); }
+.icon-button.delete { font-size: 1.4rem; }
+.icon-button.delete:hover { color: var(--danger); }
+
+/* --- Sürükleme --- */
+
+.drag-handle {
+  padding: 6px 4px;
+  font-size: 1.1rem;
+  cursor: grab;
+  touch-action: none; /* dokunmatikte sürüklerken sayfa kaymasın */
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.drag-handle:hover { color: var(--text); }
+
+.todo-list.is-dragging,
+.todo-list.is-dragging * {
+  cursor: grabbing !important;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.todo-item.dragging {
+  z-index: 1;
+  background: var(--bg);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.18);
+}
+
+/* --- Düzenleme formu --- */
+
+.todo-item.editing { padding: 12px; }
+
+.edit-form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.edit-form .text-input { padding: 8px 10px; }
+
+.edit-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.edit-actions .primary-button { padding: 8px 14px; }

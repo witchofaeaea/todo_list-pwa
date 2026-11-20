@@ -1,0 +1,122 @@
+/* Form alanları, düğmeler, arama/filtre çubuğu ve alt çubuk */
+
+/* --- Ortak alanlar ve düğmeler --- */
+
+.text-input,
+.field-input {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+}
+
+.text-input { padding: 12px 14px; font-size: 1rem; }
+.field-input { padding: 6px 10px; font-size: 0.95rem; }
+
+.text-input:focus,
+.field-input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.text-input[aria-invalid="true"] { border-color: var(--danger); }
+
+.primary-button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-text);
+  font-weight: 600;
+}
+
+.secondary-button {
+  padding: 8px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--text);
+}
+
+.link-button {
+  border: 0;
+  background: none;
+  color: var(--accent);
+  padding: 4px 0;
+}
+
+.link-button:disabled { color: var(--muted); cursor: default; opacity: 0.6; }
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.details-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 16px;
+}
+
+/* --- Yeni görev formu --- */
+
+.todo-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+}
+
+.todo-form .details-row { grid-column: 1 / -1; }
+
+.error { color: var(--danger); margin: 8px 0 0; font-size: 0.9rem; }
+
+/* --- Arama ve filtreler --- */
+
+.toolbar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 20px 0 12px;
+}
+
+.search-input { width: 100%; padding-block: 10px; }
+
+.filters {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.filter {
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.filter.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+/* --- Alt çubuk --- */
+
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.footer-actions {
+  display: flex;
+  gap: 16px;
+}

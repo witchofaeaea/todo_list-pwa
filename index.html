@@ -9,7 +9,10 @@
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="icon.svg">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/controls.css">
+  <link rel="stylesheet" href="css/todos.css">
+  <link rel="stylesheet" href="css/toast.css">
 </head>
 <body>
   <main class="app">
@@ -20,26 +23,52 @@
 
     <form id="todo-form" class="todo-form" data-testid="todo-form" autocomplete="off">
       <label for="todo-input" class="visually-hidden">Yeni görev</label>
-      <input id="todo-input" type="text" placeholder="Ne yapılacak?" maxlength="200" data-testid="todo-input">
-      <button type="submit" data-testid="add-button">Ekle</button>
+      <input id="todo-input" class="text-input" type="text" placeholder="Ne yapılacak?" maxlength="200" data-testid="todo-input">
+      <button type="submit" class="primary-button" data-testid="add-button">Ekle</button>
+      <div class="details-row">
+        <label class="field">
+          <span>Son tarih</span>
+          <input id="todo-due" type="date" class="field-input" data-testid="todo-due-input">
+        </label>
+        <label class="field">
+          <span>Öncelik</span>
+          <select id="todo-priority" class="field-input" data-testid="todo-priority-select">
+            <option value="low">Düşük</option>
+            <option value="normal" selected>Normal</option>
+            <option value="high">Yüksek</option>
+          </select>
+        </label>
+      </div>
     </form>
     <p id="form-error" class="error" role="alert" hidden data-testid="form-error"></p>
 
-    <nav class="filters" aria-label="Filtreler">
-      <button type="button" class="filter active" data-filter="all" data-testid="filter-all">Tümü</button>
-      <button type="button" class="filter" data-filter="active" data-testid="filter-active">Aktif</button>
-      <button type="button" class="filter" data-filter="done" data-testid="filter-done">Tamamlanan</button>
-    </nav>
+    <div class="toolbar">
+      <label for="search-input" class="visually-hidden">Görevlerde ara</label>
+      <input id="search-input" class="text-input search-input" type="search" placeholder="Ara…" data-testid="search-input">
+      <nav class="filters" aria-label="Filtreler">
+        <button type="button" class="filter active" data-filter="all" data-testid="filter-all">Tümü</button>
+        <button type="button" class="filter" data-filter="active" data-testid="filter-active">Aktif</button>
+        <button type="button" class="filter" data-filter="done" data-testid="filter-done">Tamamlanan</button>
+      </nav>
+    </div>
 
     <ul id="todo-list" class="todo-list" data-testid="todo-list"></ul>
     <p id="empty-state" class="empty" data-testid="empty-state">Henüz görev yok.</p>
 
     <footer class="app-footer">
       <span id="counter" data-testid="counter">0 görev kaldı</span>
-      <button type="button" id="clear-done" class="link-button" data-testid="clear-done">Tamamlananları sil</button>
+      <div class="footer-actions">
+        <button type="button" id="toggle-all" class="link-button" data-testid="toggle-all">Tümünü tamamla</button>
+        <button type="button" id="clear-done" class="link-button" data-testid="clear-done">Tamamlananları sil</button>
+      </div>
     </footer>
   </main>
 
-  <script src="app.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden data-testid="toast">
+    <span id="toast-message" data-testid="toast-message"></span>
+    <button type="button" id="toast-undo" class="toast-undo" data-testid="toast-undo">Geri al</button>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>

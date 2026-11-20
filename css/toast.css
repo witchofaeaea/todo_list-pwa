@@ -1,0 +1,39 @@
+/* "Görev silindi · Geri al" bildirimi */
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: max-content;
+  max-width: calc(100% - 32px);
+  padding: 10px 10px 10px 16px;
+  border-radius: 12px;
+  background: var(--toast-bg);
+  color: var(--toast-text);
+  box-shadow: 0 6px 24px rgb(0 0 0 / 0.25);
+  transform: translateX(-50%);
+  animation: toast-in 0.2s ease-out;
+}
+
+.toast-undo {
+  padding: 4px 10px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--toast-action);
+  font-weight: 600;
+}
+
+.toast-undo:hover { text-decoration: underline; }
+
+@keyframes toast-in {
+  from { opacity: 0; transform: translate(-50%, 8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast { animation: none; }
+}
